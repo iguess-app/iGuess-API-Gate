@@ -1,11 +1,20 @@
 {
-  "name": "iguess-api",
+  "name": "iguess-api-gate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": ""
   },
   "author": "{{Lucas Alves L.A.}}",
-  "license": "ISC"
+  "dependencies": {
+    "boom": "^4.2.0",
+    "colors": "^1.1.2",
+    "consign": "^0.1.2",
+    "hapi": "16.1.0",
+    "joi": "^10.1.0",
+    "loadash": "0.0.1",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
+  }
 }
