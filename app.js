@@ -1,18 +1,15 @@
+'use strict';
+
 const consign = require('consign');
 const app = {};
+app.coincidents = require('./IGuess-API-Coincidents/app');
 
 consign()
   .include('configServer.js')
-  .include('src/helpers')
-  .include('src/utils')
-  .include('src/managers')
-  .include('src/application/repositories')
-  .include('src/application/services')
-  .include('src/application/controllers')
-  .include('src/application/routes')
-  .include('test/unitTests')
-  .include('test/integratedTests')
-  .include('test/mock')
+  .include('src/repositories')
+  .include('src/services')
+  .include('src/controllers')
+  .include('src/routes')
   .into(app);
 
 app.configServer.start((err) => {
@@ -20,5 +17,5 @@ app.configServer.start((err) => {
     throw err;
   }
 
-  console.log((`Server running at ${app.configServer.info.uri}`));
+  console.log(`Server running at ${app.configServer.info.uri}`);
 })
