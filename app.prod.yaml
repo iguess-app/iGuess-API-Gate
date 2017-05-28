@@ -1,0 +1,10 @@
+service: gate
+runtime: nodejs
+env: flex
+env_variables:
+  ENVIRONMENT: production
+  PERSONAL_URL: https://personal-dot-iguess-666666.appspot.com
+  HOLI_URL: https://holi-dot-iguess-666666.appspot.com
+  GUESS_URL: https://guess-dot-iguess-666666.appspot.com
+  REDIS_CONN: false
+  MONGO_CONN: false
