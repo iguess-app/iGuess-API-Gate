@@ -4,13 +4,14 @@ const Boom = require('boom');
 
 module.exports = (app) => {
   const requestManager = app.coincidents.Managers.requestManager;
+  const apis = app.coincidents.Config.apis;
 
-  const getProfile = (headers) => 
-    new Promise((resolve, reject) => {
-      resolve(false);
-    })
-    // requestManager.get('http://localhost:9002/getprofile', headers)
-    //   .catch((err) => Boom.serverUnavailable(err));
+  const singIn = (reqBody) =>
+    requestManager.post(`${apis.personalUrl}/getteams`, null, reqBody)
+    .catch((err) => Boom.serverUnavailable(err));
 
-  return { getProfile }
+
+  return {
+    singIn
+  }
 }
