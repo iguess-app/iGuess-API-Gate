@@ -15,6 +15,7 @@ module.exports = (app) => {
     return requestManager.get(uri, headers, reqBody)
     .catch((err) => Boom.serverUnavailable(err));
   }
+
   const singIn = (reqBody) =>
     requestManager.post(`${apis.personalUrl}/getteams`, null, reqBody)
     .catch((err) => Boom.serverUnavailable(err));
