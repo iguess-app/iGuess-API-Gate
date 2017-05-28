@@ -25,7 +25,10 @@ module.exports = (app) => {
         }).unknown()
       },
       response: {
-        schema: Joi.object().meta({
+        schema: Joi.object({
+            guessLeagueCreated: Joi.bool().required(),
+            guessLeague: Joi.object().required()
+          }).meta({
           className: 'Response'
         })
       }

@@ -7,9 +7,10 @@ module.exports = (app) => {
   const requestManager = app.coincidents.Managers.requestManager;
   const apis = app.coincidents.Config.apis;
 
-  const getTeams = (reqBody) =>
-    requestManager.post(`${apis.holiUrl}/getteams`, null, reqBody)
-    .catch((err) => Boom.serverUnavailable(err));
+  const getTeams = (reqBody) => {
+    // requestManager.post(`${apis.holiUrl}/getteams`, null, reqBody)
+    // .catch((err) => Boom.serverUnavailable(err));
+  }
 
   const getChampionship = (reqBody, headers) => {
 

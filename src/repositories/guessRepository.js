@@ -12,7 +12,7 @@ module.exports = (app) => {
 
     return requestManager.post(uri, headers, reqBody)
       .catch((err) => {
-        throw Boom.serverUnavailable(err)
+        throw err
       });
   }
 

@@ -13,7 +13,7 @@ module.exports = (app) => {
       .then((championship) => _setChampionship(championship, reqBody))
       .then((payload) => guessRepository.createGuessLeague(payload, headers))
       .then((guessLeagueCreated) => {
-        personalRepository.sendGuessLeagueNotification(reqBody, headers)
+        //personalRepository.sendGuessLeagueNotifications(reqBody, headers)
         return guessLeagueCreated
       })
   }
