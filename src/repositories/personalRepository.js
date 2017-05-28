@@ -3,7 +3,7 @@
 const Boom = require('boom');
 
 module.exports = (app) => {
-  const requestManager = app.src.managers.requestManager;
+  const requestManager = app.coincidents.Managers.requestManager;
 
   const getProfile = (headers) => 
     new Promise((resolve, reject) => {

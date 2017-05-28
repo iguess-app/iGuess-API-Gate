@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 module.exports = (app) => {
 
-    const profileController = app.src.application.controllers.profileController;
+    const profileController = app.src.controllers.profileController;
     const server = app.configServer;
 
     server.route({

@@ -2,7 +2,7 @@
 
 const SelectTeamService = (app) => {
 
-  const holiRepository = app.src.application.repositories.holiRepository;
+  const holiRepository = app.src.repositories.holiRepository;
 
   const getTeams = (reqBody) => {
     return holiRepository.getTeams(reqBody);

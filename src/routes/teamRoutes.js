@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 module.exports = (app) => {
 
-  const teamController = app.src.application.controllers.teamController;
+  const teamController = app.src.controllers.teamController;
   const server = app.configServer;
 
   server.route({

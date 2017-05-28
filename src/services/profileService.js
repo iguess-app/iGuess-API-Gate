@@ -2,7 +2,7 @@
 
 module.exports = (app) => {
 
-  const personalRepository = app.src.application.repositories.personalRepository;
+  const personalRepository = app.src.repositories.personalRepository;
 
   const getProfile = (reqBody) => 
     personalRepository.getProfile(reqBody);
