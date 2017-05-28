@@ -3,20 +3,27 @@
 module.exports = (app) => {
 
   const profileService = app.src.services.profileService;
-  
+
   const getProfile = (request, reply) => {
-    profileService.getProfile(request.payload)
-      .then((teams) => {
-        reply(teams)
-      });
+    const query = request.query;
+    const headers = request.headers;
+
+    profileService.getProfile(query, headers)
+      .then((profile) => reply(profile))
+      .catch((err) => reply(err))
   }
 
-  const someElse = (request, reply) => {
-    return true;
+  const singIn = (request, reply) => {
+    const query = request.query;
+    const headers = request.headers;
+
+    profileService.singIn(query, headers)
+      .then((teams) => reply(teams))
+      .catch((err) => reply(err))
   }
 
   return {
     getProfile,
-    someElse
+    singIn
   }
 }
