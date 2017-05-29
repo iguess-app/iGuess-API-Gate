@@ -17,6 +17,12 @@
     "joi": "10.1.0",
     "loadash": "0.0.1",
     "request": "2.79.0",
-    "request-promise": "4.1.1"
+    "request-promise": "4.1.1",
+    "mongoose": "4.7.6",
+    "bcrypt": "1.0.2",
+    "bluebird": "3.5.0",
+    "jsonwebtoken": "7.2.1",
+    "redis": "2.6.3",
+    "md5": "2.2.1"
   }
 }
