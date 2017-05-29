@@ -1,10 +1,13 @@
 {
   "name": "iguess-api-gate",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": ""
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "6.9.1"
   },
   "author": "{{Lucas Alves L.A.}}",
   "dependencies": {
