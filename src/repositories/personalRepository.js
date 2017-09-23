@@ -11,7 +11,9 @@ module.exports = (app) => {
     const uri = `${apis.personalUrl}/profiles/getProfile?${_buildQueryString(request)}`
 
     return requestManager.get(uri, headers)
-      .catch((err) => Boom.serverUnavailable(err));
+      .catch((err) => 
+        Boom.serverUnavailable(err.error.message)
+      )
   }
 
   const sendGuessLeagueNotifications = (request, headers) => {
@@ -38,14 +40,20 @@ module.exports = (app) => {
 
 const _buildQueryString = (request) => {
   const keys = Object.keys(request)
-  const value = Object.values(request)
+  const values = Object.values(request)
 
-  keys.forEach((key, index) => {
-    
-  })
-  const qsBuilded = qs.stringify({
-    userRef: request.userRef
-  })
+  const qsBuilded = keys.reduce((acumulator, key, index) => {
+    const qsObj = {}
+    qsObj[key] = values[index]
+    const partialQS = qs.stringify(qsObj)
+     
+    if (acumulator.length) {
+      return `${acumulator}&${partialQS}` 
+    }
+
+    return partialQS
+  }, '')
+  
   
   return qsBuilded
 }
