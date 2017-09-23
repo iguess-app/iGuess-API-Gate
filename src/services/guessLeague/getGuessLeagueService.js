@@ -25,6 +25,7 @@ const _getUserData = (guessLeagueFound, headers, personalRepository) => {
   return Promise.each(arrayPromise, (userData, index) => {
     guessLeagueFound.players[index].userName = userData.userName ? userData.userName : ''
     guessLeagueFound.players[index].avatar = userData.avatar ? userData.avatar : ''
+    guessLeagueFound.players[index].name = userData.name ? userData.name : ''
   }).then(() => guessLeagueFound)
 
 }
