@@ -27,20 +27,7 @@ module.exports = (app) => {
     config: {
       handler: (request, reply) => {
         profileController.getProfile(request, reply)
-      },
-      validate: {
-        query: Joi.object({
-          userName: Joi.string().required()
-        }),
-        headers: Joi.object({
-          language: Joi.string().default('en-us')
-        }).unknown()
-      },
-      response: {
-        schema: Joi.object().meta({
-          className: 'Response'
-        })
-      }
+      } 
     }
   })
 };

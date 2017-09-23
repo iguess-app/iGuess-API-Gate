@@ -1,19 +1,22 @@
 'use Strict';
 
 const Boom = require('boom');
-const qs = require('querystring')
+
 
 module.exports = (app) => {
-  const requestManager = app.coincidents.Managers.requestManager;
-  const apis = app.coincidents.Config.apis;
+  const requestManager = app.coincidents.Managers.requestManager
+  const apis = app.coincidents.Config.apis
+  const log = app.coincidents.Managers.logManager
 
   const getProfile = (request, headers) => {
-    const uri = `${apis.personalUrl}/profiles/getProfile?${_buildQueryString(request)}`
+    const uri = `${apis.personalUrl}/profiles/getProfile`
 
-    return requestManager.get(uri, headers)
-      .catch((err) => 
-        Boom.serverUnavailable(err.error.message)
-      )
+    return requestManager.get(uri, headers, request)
+      .catch((err) => {
+        log.error(err)
+
+        return Boom.serverUnavailable(err.error.message)
+      })
   }
 
   const sendGuessLeagueNotifications = (request, headers) => {
@@ -34,26 +37,7 @@ module.exports = (app) => {
 
   return {
     getProfile,
-    singIn
+    singIn,
+    sendGuessLeagueNotifications
   }
-}
-
-const _buildQueryString = (request) => {
-  const keys = Object.keys(request)
-  const values = Object.values(request)
-
-  const qsBuilded = keys.reduce((acumulator, key, index) => {
-    const qsObj = {}
-    qsObj[key] = values[index]
-    const partialQS = qs.stringify(qsObj)
-     
-    if (acumulator.length) {
-      return `${acumulator}&${partialQS}` 
-    }
-
-    return partialQS
-  }, '')
-  
-  
-  return qsBuilded
 }

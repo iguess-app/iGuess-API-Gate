@@ -8,12 +8,16 @@ module.exports = (app) => {
     const uri = `${apis.guessUrl}/guessleague/create`
 
     return requestManager.post(uri, headers, reqBody)
-      .catch((err) => {
-        throw err
-      });
+  }
+
+  const getGuessLeague = (request, headers) => {
+    const uri = `${apis.guessUrl}/guessleague/getGuessLeague`
+
+    return requestManager.get(uri, headers, request)
   }
 
   return {
-    createGuessLeague
+    createGuessLeague,
+    getGuessLeague
   }
 }
