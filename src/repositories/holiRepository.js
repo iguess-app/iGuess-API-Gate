@@ -1,31 +1,30 @@
-'use Strict';
+'use Strict'
 
-const Boom = require('boom');
+const Boom = require('boom')
 const qs = require('querystring')
 
-module.exports = (app) => {
-  const requestManager = app.coincidents.Managers.requestManager;
-  const apis = app.coincidents.Config.apis;
+const coincidents = require('iguess-api-coincidents')
+const requestManager = coincidents.Managers.requestManager
+const apis = coincidents.Config.apis
 
-  const getTeams = (reqBody) => {
-    // requestManager.post(`${apis.holiUrl}/getteams`, null, reqBody)
-    // .catch((err) => Boom.serverUnavailable(err));
-  }
+const getTeams = (reqBody) => {
+  // requestManager.post(`${apis.holiUrl}/getteams`, null, reqBody)
+  // .catch((err) => Boom.serverUnavailable(err))
+}
 
-  const getChampionship = (reqBody, headers) => {
+const getChampionship = (reqBody, headers) => {
 
-    let uri = `${apis.holiUrl}/championship/getChampionship`
-    const urlQuerystring = qs.stringify({championshipId: reqBody.championshipId})
-    uri = `${uri}?${urlQuerystring}`
+  let uri = `${apis.holiUrl}/championship/getChampionship`
+  const urlQuerystring = qs.stringify({championshipId: reqBody.championshipId})
+  uri = `${uri}?${urlQuerystring}`
 
-    return requestManager.get(uri, headers)
-      .catch((err) => {
-        throw Boom.serverUnavailable(err)
-      });
-  }
+  return requestManager.get(uri, headers)
+    .catch((err) => {
+      throw Boom.serverUnavailable(err)
+    })
+}
 
-  return {
-    getTeams,
-    getChampionship
-  }
+module.exports = {
+  getTeams,
+  getChampionship
 }

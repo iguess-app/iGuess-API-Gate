@@ -1,23 +1,22 @@
-'use Strict';
+'use strict'
 
-module.exports = (app) => {
-  const requestManager = app.coincidents.Managers.requestManager;
-  const apis = app.coincidents.Config.apis;
+const coincidents = require('iguess-api-coincidents')
+const requestManager = coincidents.Managers.requestManager
+const apis = coincidents.Config.apis
 
-  const createGuessLeague = (reqBody, headers) => {
-    const uri = `${apis.guessUrl}/guessleague/create`
+const createGuessLeague = (reqBody, headers) => {
+  const uri = `${apis.guessUrl}/guessleague/create`
 
-    return requestManager.post(uri, headers, reqBody)
-  }
+  return requestManager.post(uri, headers, reqBody)
+}
 
-  const getGuessLeague = (request, headers) => {
-    const uri = `${apis.guessUrl}/guessleague/getGuessLeague`
+const getGuessLeague = (request, headers) => {
+  const uri = `${apis.guessUrl}/guessleague/getGuessLeague`
 
-    return requestManager.get(uri, headers, request)
-  }
+  return requestManager.get(uri, headers, request)
+}
 
-  return {
-    createGuessLeague,
-    getGuessLeague
-  }
+module.exports = {
+  createGuessLeague,
+  getGuessLeague
 }
