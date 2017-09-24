@@ -12,11 +12,7 @@ module.exports = (app) => {
     const uri = `${apis.personalUrl}/profiles/getProfile`
 
     return requestManager.get(uri, headers, request)
-      .catch((err) => {
-        log.error(err)
-
-        return Boom.serverUnavailable(err.error.message)
-      })
+      .catch((err) => _treatError(err))
   }
 
   const sendGuessLeagueNotifications = (request, headers) => {
@@ -32,6 +28,15 @@ module.exports = (app) => {
   const singIn = (request) => {
     //requestManager.post(`${apis.personalUrl}/getteams`, null, request)
     //.catch((err) => Boom.serverUnavailable(err));
+  }
+
+  const _treatError = (err) => {
+    log.error(err)
+    if (err.error.code === 'ECONNREFUSED') {
+      return Boom.serverUnavailable(err.error.message)
+    }
+
+    return err
   }
 
 
