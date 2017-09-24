@@ -5,7 +5,6 @@ const requestManager = coincidents.Managers.requestManager
 const apis = coincidents.Config.apis
 const treatError = require('../treatError')
 
-
 const createGuessLeague = (reqBody, headers) => {
   const uri = `${apis.guessUrl}/guessleague/create`
 
@@ -21,7 +20,17 @@ const getGuessLeague = (request, headers) => {
   })
 }
 
+const inviteToGuessLeague = (request, headers) => {
+  const uri = `${apis.guessUrl}/guessleague/inviteToGuessLeague`
+
+  return requestManager.patch(uri, headers, request)
+  .catch((err) => {
+    throw treatError(err)
+  })
+}
+
 module.exports = {
   createGuessLeague,
-  getGuessLeague
+  getGuessLeague,
+  inviteToGuessLeague
 }

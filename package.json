@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "set SERVER_PORT=9000&& node app.js"
+    "start": "set REDIS_CONNECTION=0&&set MONGO_CONNECTION=0&&set SERVER_PORT=9000&& node app.js"
   },
   "engines": {
     "node": "8.2.1"

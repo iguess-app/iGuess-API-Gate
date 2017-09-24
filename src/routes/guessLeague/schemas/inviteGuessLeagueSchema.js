@@ -12,13 +12,9 @@ const request = Joi.object({
   ).required(),
   guessLeagueRef: Joi.string().required().length(ID_SIZE),
   championshipRef: Joi.string().required().length(ID_SIZE)
-}).meta({
-  className: 'Request'
 })
 
-const response = Joi.object({}).meta({
-  className: 'Response'
-})
+const response = Joi.object({})
 
 module.exports = {
   request,

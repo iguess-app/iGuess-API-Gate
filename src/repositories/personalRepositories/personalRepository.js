@@ -13,7 +13,7 @@ const getProfile = (request, headers) => {
 }
 
 const sendGuessLeagueNotifications = (request, headers) => {
-  const uri = `${apis.guessUrl}/notifications/setGuessLeagueNotifications`
+  const uri = `${apis.personalUrl}/notifications/setGuessLeagueNotifications`
 
   return requestManager.put(uri, headers, request)
     .catch((err) => {
@@ -21,14 +21,17 @@ const sendGuessLeagueNotifications = (request, headers) => {
     })
 }
 
+const areFriends = (request, headers) => {
+  const uri = `${apis.personalUrl}/friends/areFriends`
 
-const singIn = (request) => {
-  //requestManager.post(`${apis.personalUrl}/getteams`, null, request)
-  //.catch((err) => Boom.serverUnavailable(err));
+  return requestManager.get(uri, headers, request)
+    .catch((err) => {
+      throw treatError(err)
+    })
 }
 
 module.exports = {
   getProfile,
-  singIn,
-  sendGuessLeagueNotifications
+  sendGuessLeagueNotifications,
+  areFriends
 }

@@ -10,14 +10,11 @@ server.route({
   method: 'PATCH',
   config: {
     handler: (request, reply) => {
-      guessLeagueController.createGuessLeague(request, reply)
+      guessLeagueController.inviteTo(request, reply)
     },
     validate: {
       payload: schema.inviteGuessLeagueSchema.request,
       headers: headerSchema
-    },
-    response: {
-      schema: schema.inviteGuessLeagueSchema.response
     }
   }
 })
