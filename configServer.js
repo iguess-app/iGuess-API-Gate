@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-const Hapi = require('hapi');
+const Hapi = require('hapi')
+
 const Config = require('iguess-api-coincidents').Config
-
 const server = new Hapi.Server()
 server.connection({
   host: '0.0.0.0',

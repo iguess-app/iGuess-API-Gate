@@ -2,8 +2,8 @@
 
 const Joi = require('joi');
 
-const teamController = require('../controllers/teamController')
-const server = require('../../configServer')
+const teamController = require('../../controllers/teamController')
+const server = require('../../../configServer')
 
 server.route({
   path: '/getteams',

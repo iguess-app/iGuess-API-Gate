@@ -2,8 +2,8 @@
 
 const Joi = require('joi')
 
-const profileController = require('../controllers/profileController')
-const server = require('../../configServer')
+const profileController = require('../../controllers/profileController')
+const server = require('../../../configServer')
 
 server.route({
   path: '/profile/singIn',
