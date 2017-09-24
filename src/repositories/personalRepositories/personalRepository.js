@@ -1,17 +1,15 @@
 'use strict'
 
-const Boom = require('boom');
-
 const coincidents = require('iguess-api-coincidents')
 const requestManager = coincidents.Managers.requestManager
-const log = coincidents.Managers.logManager
 const apis = coincidents.Config.apis
+const treatError = require('../treatError')
 
 const getProfile = (request, headers) => {
   const uri = `${apis.personalUrl}/profiles/getProfile`
 
   return requestManager.get(uri, headers, request)
-    .catch((err) => _treatError(err))
+    .catch((err) => treatError(err))
 }
 
 const sendGuessLeagueNotifications = (request, headers) => {
@@ -27,15 +25,6 @@ const sendGuessLeagueNotifications = (request, headers) => {
 const singIn = (request) => {
   //requestManager.post(`${apis.personalUrl}/getteams`, null, request)
   //.catch((err) => Boom.serverUnavailable(err));
-}
-
-const _treatError = (err) => {
-  log.error(err)
-  if (err.error.code === 'ECONNREFUSED') {
-    return Boom.serverUnavailable(err.error.message)
-  }
-
-  return err
 }
 
 module.exports = {
