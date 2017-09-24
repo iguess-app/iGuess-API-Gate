@@ -1,6 +1,6 @@
 'use strict'
 
-const guessRepository = require('../../repositories').guessRepository
+const guessLeagueRepository = require('../../repositories').guessLeagueRepository
 const personalRepository = require('../../repositories').personalRepository
 const holiRepository = require('../../repositories').holiRepository
 
@@ -10,7 +10,7 @@ const createGuessLeague = (reqBody, headers) =>
 
    holiRepository.getChampionship(reqBody, headers)
     .then((championship) => _setChampionship(championship, reqBody))
-    .then((payload) => guessRepository.createGuessLeague(payload, headers))
+    .then((payload) => guessLeagueRepository.createGuessLeague(payload, headers))
     .then((guessLeagueCreated) => {
       //personalRepository.sendGuessLeagueNotifications(reqBody, headers)
       return guessLeagueCreated

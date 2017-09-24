@@ -2,10 +2,10 @@
 
 const Promise = require('bluebird')
 
-const guessRepository = require('../../repositories').guessRepository
+const guessLeagueRepository = require('../../repositories').guessLeagueRepository
 const personalRepository = require('../../repositories').personalRepository
 
-const getGuessLeague = (request, headers) => guessRepository.getGuessLeague(request, headers)
+const getGuessLeague = (request, headers) => guessLeagueRepository.getGuessLeague(request, headers)
   .then((guessLeagueFound) => _getUserData(guessLeagueFound, headers))
 
 

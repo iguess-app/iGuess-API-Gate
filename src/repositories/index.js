@@ -1,11 +1,11 @@
 'use strict'
 
-const guessRepository = require('./guessRepository')
-const holiRepository = require('./holiRepository')
-const personalRepository = require('./personalRepository')
+const guessLeagueRepository = require('./guessRepositories/').guessLeagueRepository
+const holiRepository = require('./holiRepositories/').holiRepository
+const personalRepository = require('./personalRepositories/').personalRepository
 
 module.exports = {
-  guessRepository,
+  guessLeagueRepository,
   holiRepository,
   personalRepository
 }
