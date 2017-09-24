@@ -2,18 +2,14 @@
 
 const Promise = require('bluebird')
 
-module.exports = (app) => {
-  const personalRepository = app.src.repositories.personalRepository
-  const guessRepository = app.src.repositories.guessRepository
+const guessRepository = require('../../repositories').guessRepository
+const personalRepository = require('../../repositories').personalRepository
 
-  const getGuessLeague = (request, headers) => guessRepository.getGuessLeague(request, headers)
-    .then((guessLeagueFound) => _getUserData(guessLeagueFound, headers, personalRepository))
-
-  return getGuessLeague
-}
+const getGuessLeague = (request, headers) => guessRepository.getGuessLeague(request, headers)
+  .then((guessLeagueFound) => _getUserData(guessLeagueFound, headers))
 
 
-const _getUserData = (guessLeagueFound, headers, personalRepository) => {
+const _getUserData = (guessLeagueFound, headers) => {
   const arrayPromise = guessLeagueFound.players.map((player) => {
     const requestObj = {
       userRef: player.userRef
@@ -29,3 +25,5 @@ const _getUserData = (guessLeagueFound, headers, personalRepository) => {
   }).then(() => guessLeagueFound)
 
 }
+
+module.exports = () => getGuessLeague

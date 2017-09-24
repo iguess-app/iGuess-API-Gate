@@ -1,21 +1,14 @@
 'use Strict';
 
-const SelectTeamService = (app) => {
+const holiRepository = require('../repositories').holiRepository
 
-  const holiRepository = app.src.repositories.holiRepository;
+const getTeams = (reqBody) => holiRepository.getTeams(reqBody)
 
-  const getTeams = (reqBody) => {
-    return holiRepository.getTeams(reqBody);
-  }
-
-  const setTeams = () => {
-    holiRepository.setTeams();
-  }
-  
-  return {
-    getTeams,
-    setTeams
-  }
+const setTeams = () => {
+  holiRepository.setTeams()
 }
 
-module.exports = SelectTeamService;
+module.exports = {
+  getTeams,
+  setTeams
+}

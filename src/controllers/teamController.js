@@ -1,22 +1,19 @@
-'use Strict';
+'use strict'
 
-module.exports = (app) => {
+const teamService = require('../services/teamService')
 
-  const teamService = app.src.services.teamService;
-  
-  const getTeams = (request, reply) => {
-    teamService.getTeams(request.payload)
-      .then((teams) => {
-        reply(teams)
-      });
-  }
+const getTeams = (request, reply) => {
+  teamService.getTeams(request.payload)
+    .then((teams) => {
+      reply(teams)
+    });
+}
 
-  const setTeams = (request, reply) => {
-    return true;
-  }
+const setTeams = (request, reply) => {
+  return true;
+}
 
-  return {
-    getTeams,
-    setTeams
-  }
+module.exports = {
+  getTeams,
+  setTeams
 }

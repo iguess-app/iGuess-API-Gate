@@ -1,15 +1,9 @@
-'use Strict';
+'use strict'
 
-module.exports = (app) => {
+const personalRepository = require('../repositories').personalRepository
 
-  const personalRepository = app.src.repositories.personalRepository;
+const getProfile = (reqBody, headers) => personalRepository.getProfile(reqBody, headers)
 
-  const getProfile = (reqBody, headers) => {
-
-    return personalRepository.getProfile(reqBody, headers);
-  }
-
-  return {
-    getProfile
-  }
+module.exports = {
+  getProfile
 }
