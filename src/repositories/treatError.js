@@ -15,7 +15,7 @@ const treatError = (err) => {
     return Boom.serverUnavailable(err.message) 
   }
 
-  return err
+  return Boom.create(err.error.statusCode, err.error.message, err)
 }
 
 module.exports = treatError
