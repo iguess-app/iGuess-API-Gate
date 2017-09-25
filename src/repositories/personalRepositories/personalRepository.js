@@ -12,7 +12,7 @@ const getProfile = (request, headers) => {
     .catch((err) => treatError(err))
 }
 
-const sendGuessLeagueNotifications = (request, headers) => {
+const setGuessLeagueNotifications = (request, headers) => {
   const uri = `${apis.personalUrl}/notifications/setGuessLeagueNotifications`
 
   return requestManager.put(uri, headers, request)
@@ -32,6 +32,6 @@ const areFriends = (request, headers) => {
 
 module.exports = {
   getProfile,
-  sendGuessLeagueNotifications,
+  setGuessLeagueNotifications,
   areFriends
 }

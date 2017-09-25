@@ -12,7 +12,7 @@ const createGuessLeague = (reqBody, headers) =>
     .then((championship) => _setChampionship(championship, reqBody))
     .then((payload) => guessLeagueRepository.createGuessLeague(payload, headers))
     .then((guessLeagueCreated) => {
-      //personalRepository.sendGuessLeagueNotifications(reqBody, headers)
+      //personalRepository.setGuessLeagueNotifications(reqBody, headers)
       return guessLeagueCreated
     })
 
