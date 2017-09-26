@@ -14,12 +14,11 @@ const inviteTo = (request, headers) => {
     .then((guessLeagueCreated) => {
       const setGuessLeagueNotificationObj = guessLeagueCreated
       setGuessLeagueNotificationObj.invitatorUserRef = request.userRef
-      
-      return personalRepository.setGuessLeagueNotifications(setGuessLeagueNotificationObj) 
-    }).then((gg) => {
-      //TODO retornar objeto guessLeague ao inves de array de notifications
-      return gg
-    })
+
+      return personalRepository.setGuessLeagueNotifications(setGuessLeagueNotificationObj)
+    }).then(() => ({
+      usersInviteads: true
+    }))
 }
 
 const _verifyIfInvitatorIsInviteadsFriends = (request, headers) => {
@@ -32,7 +31,7 @@ const _verifyIfInvitatorIsInviteadsFriends = (request, headers) => {
 
     return personalRepository.areFriends(areFriendsObj, headers)
   })
-  
+
   return Promise.each(areFriendsArrayPromise, (friendsResponse) => {
     if (friendsResponse.areFriends === false) {
       throw Boom.notAcceptable(dictionary.notFriendsAtInvite)
