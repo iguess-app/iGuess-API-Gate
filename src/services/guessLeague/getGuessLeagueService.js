@@ -6,10 +6,10 @@ const guessLeagueRepository = require('../../repositories').guessLeagueRepositor
 const personalRepository = require('../../repositories').personalRepository
 
 const getGuessLeague = (request, headers) => guessLeagueRepository.getGuessLeague(request, headers)
-  .then((guessLeagueFound) => _getUserData(guessLeagueFound, headers))
+  .then((guessLeagueFound) => _getUserDataAndBuildResponse(guessLeagueFound, headers))
 
 
-const _getUserData = (guessLeagueFound, headers) => {
+const _getUserDataAndBuildResponse = (guessLeagueFound, headers) => {
   const arrayPromise = guessLeagueFound.players.map((player) => {
     const requestObj = {
       userRef: player.userRef
@@ -23,8 +23,13 @@ const _getUserData = (guessLeagueFound, headers) => {
       guessLeagueFound.players[index].userName = userData.userName ? userData.userName : ''
       guessLeagueFound.players[index].avatar = userData.avatar ? userData.avatar : ''
       guessLeagueFound.players[index].name = userData.name ? userData.name : ''
+      guessLeagueFound.players[index].captain = guessLeagueFound.captains.indexOf(userData.userRef) >= 0
     }
-  }).then(() => guessLeagueFound)
+  }).then(() => {
+    Reflect.deleteProperty(guessLeagueFound, 'captains')
+    
+    return guessLeagueFound
+  })
 
 }
 
