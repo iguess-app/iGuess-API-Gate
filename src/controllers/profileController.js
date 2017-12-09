@@ -1,27 +1,26 @@
 'use strict'
 
-const profileService = require('../services/profileService')
+const personalRepository = require('../repositories').personalRepository
 
 const getProfile = (request, reply) => {
-  const query = request.query;
-  const headers = request.headers;
+  const query = request.query
+  const headers = request.headers
 
-  profileService.getProfile(query, headers)
+  personalRepository.getProfile(query, headers)
     .then((profile) => reply(profile))
     .catch((err) => reply(err))
 }
 
-const singIn = (request, reply) => {
-  const query = request.query;
-  const headers = request.headers;
+const signIn = (request, reply) => {
+  const payload = request.payload
+  const headers = request.headers
 
-  profileService.singIn(query, headers)
+  personalRepository.signIn(payload, headers)
     .then((teams) => reply(teams))
     .catch((err) => reply(err))
 }
 
-
 module.exports = {
   getProfile,
-  singIn
+  signIn
 }

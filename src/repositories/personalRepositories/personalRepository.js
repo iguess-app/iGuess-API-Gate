@@ -12,6 +12,13 @@ const getProfile = (request, headers) => {
     .catch((err) => treatError(err))
 }
 
+const signIn = (request, headers) => {
+  const uri = `${apis.personalUrl}/login/singin`
+
+  return requestManager.post(uri, headers, request)
+    .catch((err) => treatError(err))
+}
+
 const setGuessLeagueNotifications = (request, headers) => {
   const uri = `${apis.personalUrl}/notifications/setGuessLeagueNotifications`
 
@@ -31,6 +38,7 @@ const areFriends = (request, headers) => {
 }
 
 module.exports = {
+  signIn,
   getProfile,
   setGuessLeagueNotifications,
   areFriends

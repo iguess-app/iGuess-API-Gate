@@ -1,9 +1,9 @@
 'use strict'
 
 const guessLeagueRoutes = require('./guessLeague')
-const profileRoutes = require('./profiles/')
+const personalRoutes = require('./personal/')
 
 module.exports = {
   guessLeagueRoutes,
-  profileRoutes
+  personalRoutes
 }
