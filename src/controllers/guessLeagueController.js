@@ -5,8 +5,8 @@ const createGuessLeagueService = require('../services/guessLeague/createGuessLea
 const inviteToService = require('../services/guessLeague/inviteToService')()
 
 const createGuessLeague = (request, reply) => {
-  createGuessLeagueService.createGuessLeague(request.payload, request.headers)
-    .then((teams) => reply(teams))
+  createGuessLeagueService(request.payload, request.headers)
+    .then((response) => reply(response))
     .catch((err) => reply(err))
 }
 

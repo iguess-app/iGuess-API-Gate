@@ -6,7 +6,6 @@ const Config = require('iguess-api-coincidents').Config
 const ID_SIZE = Config.mongo.idStringSize
 
 const request = Joi.object({
-  userRef: Joi.string().required().length(ID_SIZE),
   userRefInviteads: Joi.array().items(
     Joi.string().length(ID_SIZE)
   ).required(),

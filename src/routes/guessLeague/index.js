@@ -1,9 +1,13 @@
 'use strict'
 
-const guessLeagueRoutes = require('./guessLeagueRoutes')
+const softRoutes = require('./softRoutes')
+const getGuessLeagueRoutes = require('./getGuessLeagueRoutes')
+const createGuessLeagueRoute = require('./createGuessLeagueRoute')
 const inviteGuessLeagueRoutes = require('./inviteGuessLeagueRoutes')
 
 module.exports = {
-  guessLeagueRoutes,
+  softRoutes,
+  getGuessLeagueRoutes,
+  createGuessLeagueRoute,
   inviteGuessLeagueRoutes
 }

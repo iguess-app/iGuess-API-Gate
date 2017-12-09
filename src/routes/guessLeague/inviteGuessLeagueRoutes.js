@@ -1,7 +1,7 @@
 'use strict'
 
 const guessLeagueController = require('../../controllers/guessLeagueController')
-const headerSchema = require('../coincidentSchemas/defaultHeaderSchema')
+const headerSchema = require('../headersSchemas/defaultHeaderSchema').defaultSessionHeaderSchema
 const server = require('../../../configServer')
 const schema = require('./schemas')
 
