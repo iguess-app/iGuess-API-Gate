@@ -3,7 +3,6 @@ env: flex
 env_variables:
   ENV: production
   PERSONAL_URL: https://personal-dot-iguess-666666.appspot.com
-  HOLI_URL: https://holi-dot-iguess-666666.appspot.com
   GUESS_URL: https://guess-dot-iguess-666666.appspot.com
   REDIS_CONNECTION: '0'
   MONGO_CONNECTION: '0'
