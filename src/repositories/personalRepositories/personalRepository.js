@@ -9,7 +9,7 @@ const getProfile = (request, headers) => {
   const uri = `${apis.personalUrl}/profiles/getProfile`
 
   return requestManager.get(uri, headers, request)
-    .catch((err) => treatError(err))
+    .catch((err) => treatError(err, false))
 }
 
 const signIn = (request, headers) => {
@@ -23,18 +23,14 @@ const setGuessLeagueNotifications = (request, headers) => {
   const uri = `${apis.personalUrl}/notifications/setGuessLeagueNotifications`
 
   return requestManager.put(uri, headers, request)
-    .catch((err) => {
-      throw err
-    })
+    .catch((err) => treatError(err))
 }
 
 const areFriends = (request, headers) => {
   const uri = `${apis.personalUrl}/friends/areFriends`
 
   return requestManager.get(uri, headers, request)
-    .catch((err) => {
-      throw treatError(err)
-    })
+    .catch((err) => treatError(err))
 }
 
 module.exports = {
