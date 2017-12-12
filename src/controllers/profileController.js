@@ -2,15 +2,6 @@
 
 const personalRepository = require('../repositories').personalRepository
 
-const getProfile = (request, reply) => {
-  const query = request.query
-  const headers = request.headers
-
-  personalRepository.getProfile(query, headers)
-    .then((profile) => reply(profile))
-    .catch((err) => reply(err))
-}
-
 const signIn = (request, reply) => {
   const payload = request.payload
   const headers = request.headers
@@ -47,10 +38,29 @@ const userNameAvailability = (request, reply) => {
     .catch((err) => reply(err))
 }
 
+const getProfile = (request, reply) => {
+  const query = request.query
+  const headers = request.headers
+
+  personalRepository.getProfile(query, headers)
+    .then((profile) => reply(profile))
+    .catch((err) => reply(err))
+}
+
+const searchProfile = (request, reply) => {
+  const query = request.query
+  const headers = request.headers
+
+  personalRepository.searchProfile(query, headers)
+    .then((profile) => reply(profile))
+    .catch((err) => reply(err))
+}
+
 module.exports = {
-  getProfile,
   signIn,
   signUp,
   emailAvailability,
-  userNameAvailability
+  userNameAvailability,
+  getProfile,
+  searchProfile
 }

@@ -42,13 +42,3 @@ server.route({
     }
   }
 })
-
-server.route({
-  path: '/profiles/getProfile',
-  method: 'GET',
-  config: {
-    handler: (request, reply) => {
-      profileController.getProfile(request, reply)
-    }
-  }
-})

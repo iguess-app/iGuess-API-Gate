@@ -5,12 +5,6 @@ const requestManager = coincidents.Managers.requestManager
 const apis = coincidents.Config.apis
 const treatError = require('../treatError')
 
-const getProfile = (request, headers) => {
-  const uri = `${apis.personalUrl}/profiles/getProfile`
-  return requestManager.get(uri, headers, request)
-    .catch((err) => treatError(err, false))
-}
-
 const signIn = (request, headers) => {
   const uri = `${apis.personalUrl}/login/signin`
   return requestManager.post(uri, headers, request)
@@ -47,12 +41,25 @@ const areFriends = (request, headers) => {
     .catch((err) => treatError(err))
 }
 
+const getProfile = (request, headers) => {
+  const uri = `${apis.personalUrl}/profiles/getProfile`
+  return requestManager.get(uri, headers, request)
+    .catch((err) => treatError(err, false))
+}
+
+const searchProfile = (request, headers) => {
+  const uri = `${apis.personalUrl}/profiles/search`
+  return requestManager.get(uri, headers, request)
+    .catch((err) => treatError(err, false))
+}
+
 module.exports = {
   signIn,
   signUp,
   emailAvailability,
   userNameAvailability,
-  getProfile,
   setGuessLeagueNotifications,
-  areFriends
+  areFriends,
+  getProfile,
+  searchProfile
 }
