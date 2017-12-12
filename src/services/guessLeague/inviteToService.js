@@ -13,9 +13,8 @@ const inviteTo = (request, headers) => {
     .then(() => guessLeagueRepository.inviteToGuessLeague(request, headers))
     .then((guessLeagueCreated) => {
       const setGuessLeagueNotificationObj = guessLeagueCreated
-      setGuessLeagueNotificationObj.invitatorUserRef = request.userRef
 
-      return personalRepository.setGuessLeagueNotifications(setGuessLeagueNotificationObj)
+      return personalRepository.setGuessLeagueNotifications(setGuessLeagueNotificationObj, headers)
     }).then(() => ({
       usersInviteads: true
     }))
