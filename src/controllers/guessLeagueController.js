@@ -30,7 +30,7 @@ const listGuessesLeagues = (request, reply) => {
 }
 
 const editGuessLeague = (request, reply) => {
-  guessLeagueRepository.listGuessLeague(request.payload, request.headers)
+  guessLeagueRepository.editGuessLeague(request.payload, request.headers)
     .then((teams) => reply(teams))
     .catch((err) => reply(err))
 }

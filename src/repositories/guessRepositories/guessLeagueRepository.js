@@ -58,6 +58,7 @@ const quitCaptain = (request, headers) => {
   return requestManager.delete(uri, headers, request)
     .catch((err) => treatError(err))
 }
+
 module.exports = {
   createGuessLeague,
   getGuessLeague,
