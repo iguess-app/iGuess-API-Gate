@@ -7,18 +7,15 @@ const Translate = require('iguess-api-coincidents').Translate
 const guessLeagueRepository = require('../../repositories').guessLeagueRepository
 const personalRepository = require('../../repositories').personalRepository
 
-const inviteTo = (request, headers) => {
-
-  return _verifyIfInvitatorIsInviteadsFriends(request, headers)
+const inviteTo = (request, headers) =>
+  _verifyIfInvitatorIsInviteadsFriends(request, headers)
     .then(() => guessLeagueRepository.inviteToGuessLeague(request, headers))
-    .then((guessLeagueCreated) => {
-      const setGuessLeagueNotificationObj = guessLeagueCreated
-
-      return personalRepository.setGuessLeagueNotifications(setGuessLeagueNotificationObj, headers)
-    }).then(() => ({
-      usersInviteads: true
-    }))
-}
+    .then((guessLeague) => personalRepository.setGuessLeagueNotifications(guessLeague, headers))
+    .then(() => _returnSucessObj())
+    .catch((err) => {
+      _undoGuessMicroService(request)
+      throw err
+    })
 
 const _verifyIfInvitatorIsInviteadsFriends = (request, headers) => {
   const dictionary = Translate.gate.selectLanguage(headers.language)
@@ -38,5 +35,12 @@ const _verifyIfInvitatorIsInviteadsFriends = (request, headers) => {
   })
 }
 
+const _undoGuessMicroService = (request) => {
+  //TODO: Desfazer inserção do usuário no array Inviteads na collection do DB de guessLeague para garantir a integridade do sistema
+}
+
+const _returnSucessObj = () => ({
+  usersInviteads: true
+})
 
 module.exports = () => inviteTo
