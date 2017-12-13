@@ -25,7 +25,7 @@ server.route({
 
 server.route({
   path: '/guessleague/quitGuessLeague',
-  method: 'PATCH',
+  method: 'DELETE',
   config: {
     handler: (request, reply) => {
       guessLeagueController.quitGuessLeague(request, reply)
