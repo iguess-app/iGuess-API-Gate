@@ -12,7 +12,13 @@ const errorTypeEnum = {
 const treatError = (err, mandatoryReturn = true) => {
   log.error(err)
   if (err.error.code === errorTypeEnum.connectionRefused) {
-    return Boom.serverUnavailable(err.message)
+    switch (mandatoryReturn) {
+      case true:
+      default:
+        throw Boom.serverUnavailable(err.message)
+      case false:
+        return Boom.serverUnavailable(err.message)
+    }
   }
   if (mandatoryReturn) {
     throw Boom.create(err.error.statusCode, err.error.message, err)
