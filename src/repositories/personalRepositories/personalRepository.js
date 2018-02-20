@@ -17,6 +17,12 @@ const signUp = (request, headers) => {
     .catch((err) => treatError(err))
 }
 
+const logout = (request, headers) => {
+  const uri = `${apis.personalUrl}/login/logout`
+  return requestManager.delete(uri, headers, request)
+    .catch((err) => treatError(err))
+}
+
 const emailAvailability = (request, headers) => {
   const uri = `${apis.personalUrl}/availability/email`
   return requestManager.get(uri, headers, request)
@@ -140,6 +146,7 @@ const tokenVerify = (request, headers) => {
 module.exports = {
   signIn,
   signUp,
+  logout,
   emailAvailability,
   userNameAvailability,
   setGuessLeagueNotifications,

@@ -24,6 +24,16 @@ server.route({
 })
 
 server.route({
+  path: '/login/logout',
+  method: 'DELETE',
+  config: {
+    handler: (request, reply) => {
+      profileController.logout(request, reply)
+    }
+  }
+})
+
+server.route({
   path: '/availability/email',
   method: 'GET',
   config: {

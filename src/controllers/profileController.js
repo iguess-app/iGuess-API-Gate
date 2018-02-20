@@ -7,7 +7,7 @@ const signIn = (request, reply) => {
   const headers = request.headers
 
   personalRepository.signIn(payload, headers)
-    .then((teams) => reply(teams))
+    .then((response) => reply(response))
     .catch((err) => reply(err))
 }
 
@@ -16,7 +16,16 @@ const signUp = (request, reply) => {
   const headers = request.headers
 
   personalRepository.signUp(payload, headers)
-    .then((teams) => reply(teams))
+    .then((response) => reply(response))
+    .catch((err) => reply(err))
+}
+
+const logout = (request, reply) => {
+  const payload = request.payload
+  const headers = request.headers
+
+  personalRepository.logout(payload, headers)
+    .then((response) => reply(response))
     .catch((err) => reply(err))
 }
 
@@ -25,7 +34,7 @@ const emailAvailability = (request, reply) => {
   const headers = request.headers
 
   personalRepository.emailAvailability(payload, headers)
-    .then((teams) => reply(teams))
+    .then((response) => reply(response))
     .catch((err) => reply(err))
 }
 
@@ -34,7 +43,7 @@ const userNameAvailability = (request, reply) => {
   const headers = request.headers
 
   personalRepository.userNameAvailability(payload, headers)
-    .then((teams) => reply(teams))
+    .then((response) => reply(response))
     .catch((err) => reply(err))
 }
 
@@ -194,6 +203,7 @@ const tokenVerify = (request, reply) => {
 module.exports = {
   signIn,
   signUp,
+  logout,
   emailAvailability,
   userNameAvailability,
   getProfile,
