@@ -37,7 +37,7 @@ const editGuessLeague = (request, headers) => {
 
 const quitGuessLeague = (request, headers) => {
   const uri = `${apis.guessUrl}/guessleague/quitGuessLeague`
-  return requestManager.patch(uri, headers, request)
+  return requestManager.delete(uri, headers, request)
     .catch((err) => treatError(err))
 }
 
