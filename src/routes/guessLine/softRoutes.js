@@ -62,3 +62,13 @@ server.route({
     }
   }
 })
+
+server.route({
+  path: '/guessline/listLinesByLeague',
+  method: 'GET',
+  config: {
+    handler: (request, reply) => {
+      guessLineController.listLinesByLeague(request, reply)
+    }
+  }
+})

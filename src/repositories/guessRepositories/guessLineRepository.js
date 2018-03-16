@@ -41,6 +41,11 @@ const listLeaguesWithActiveLines = (headers) => {
     .catch((err) => treatError(err))
 }
 
+const listLinesByLeague = (reqBody, headers) => {
+  const uri = `${apis.guessUrl}/guessline/listLinesByLeague`
+  return requestManager.get(uri, headers, reqBody)
+    .catch((err) => treatError(err))
+}
 
 module.exports = {
   addUserToGuessLine,
@@ -48,5 +53,6 @@ module.exports = {
   getGuessLine,
   listUserGuessesLines,
   userAtGuessLine,
-  listLeaguesWithActiveLines
+  listLeaguesWithActiveLines,
+  listLinesByLeague
 }

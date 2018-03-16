@@ -38,11 +38,18 @@ const listLeaguesWithActiveLines = (request, reply) => {
     .catch((err) => reply(err))
 }
 
+const listLinesByLeague = (request, reply) => {
+  guessLineRepository.listLinesByLeague(request.query, request.headers)
+    .then((response) => reply(response))
+    .catch((err) => reply(err))
+}
+
 module.exports = {
   addUserToGuessLine,
   setPredictions,
   getGuessLine,
   listUserGuessesLines,
   userAtGuessLine,
-  listLeaguesWithActiveLines
+  listLeaguesWithActiveLines,
+  listLinesByLeague
 }
