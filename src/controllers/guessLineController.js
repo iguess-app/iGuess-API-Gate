@@ -20,8 +20,8 @@ const getGuessLine = (request, reply) => {
     .catch((err) => reply(err))
 }
 
-const listGuessesLines = (request, reply) => {
-  guessLineRepository.listGuessesLines(request.query, request.headers)
+const listUserGuessesLines = (request, reply) => {
+  guessLineRepository.listUserGuessesLines(request.query, request.headers)
     .then((response) => reply(response))
     .catch((err) => reply(err))
 }
@@ -32,10 +32,17 @@ const userAtGuessLine = (request, reply) => {
     .catch((err) => reply(err))
 }
 
+const listLeaguesWithActiveLines = (request, reply) => {
+  guessLineRepository.listLeaguesWithActiveLines(request.headers)
+    .then((response) => reply(response))
+    .catch((err) => reply(err))
+}
+
 module.exports = {
   addUserToGuessLine,
   setPredictions,
   getGuessLine,
-  listGuessesLines,
-  userAtGuessLine
+  listUserGuessesLines,
+  userAtGuessLine,
+  listLeaguesWithActiveLines
 }

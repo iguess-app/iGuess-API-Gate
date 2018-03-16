@@ -34,11 +34,11 @@ server.route({
 })
 
 server.route({
-  path: '/guessline/listGuessesLines',
+  path: '/guessline/listUserGuessesLines',
   method: 'GET',
   config: {
     handler: (request, reply) => {
-      guessLineController.listGuessesLines(request, reply)
+      guessLineController.listUserGuessesLines(request, reply)
     }
   }
 })
@@ -49,6 +49,16 @@ server.route({
   config: {
     handler: (request, reply) => {
       guessLineController.userAtGuessLine(request, reply)
+    }
+  }
+})
+
+server.route({
+  path: '/guessline/listLeaguesWithActiveLines',
+  method: 'GET',
+  config: {
+    handler: (request, reply) => {
+      guessLineController.listLeaguesWithActiveLines(request, reply)
     }
   }
 })

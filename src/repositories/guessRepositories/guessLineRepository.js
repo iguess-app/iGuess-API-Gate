@@ -23,8 +23,8 @@ const getGuessLine = (reqBody, headers) => {
     .catch((err) => treatError(err))
 }
 
-const listGuessesLines = (reqBody, headers) => {
-  const uri = `${apis.guessUrl}/guessline/listGuessesLines`
+const listUserGuessesLines = (reqBody, headers) => {
+  const uri = `${apis.guessUrl}/guessline/listUserGuessesLines`
   return requestManager.get(uri, headers, reqBody)
     .catch((err) => treatError(err))
 }
@@ -35,10 +35,18 @@ const userAtGuessLine = (reqBody, headers) => {
     .catch((err) => treatError(err))
 }
 
+const listLeaguesWithActiveLines = (headers) => {
+  const uri = `${apis.guessUrl}/guessline/listLeaguesWithActiveLines`
+  return requestManager.get(uri, headers)
+    .catch((err) => treatError(err))
+}
+
+
 module.exports = {
   addUserToGuessLine,
   setPredictions,
   getGuessLine,
-  listGuessesLines,
-  userAtGuessLine
+  listUserGuessesLines,
+  userAtGuessLine,
+  listLeaguesWithActiveLines
 }
