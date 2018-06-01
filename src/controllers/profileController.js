@@ -1,6 +1,7 @@
 'use strict'
 
 const personalRepository = require('../repositories').personalRepository
+const guessLineRepository = require('../repositories/guessRepositories/guessLineRepository')
 
 const signIn = (request, reply) => {
   const payload = request.payload
@@ -15,7 +16,17 @@ const signUp = (request, reply) => {
   const payload = request.payload
   const headers = request.headers
 
+  /*personalRepository.signUp(payload, headers)
+    .then((response) => reply(response))
+    .catch((err) => reply(err)) */
+
   personalRepository.signUp(payload, headers)
+    .then(async (response) => {
+      const reqBody = { championshipRef: '5abe573a9fa112a1f1a5e925' }
+      request.headers.token = response.token
+      await guessLineRepository.addUserToGuessLine(reqBody, request.headers)
+      return response
+    })
     .then((response) => reply(response))
     .catch((err) => reply(err))
 }
