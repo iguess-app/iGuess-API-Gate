@@ -202,15 +202,6 @@ const notificationsResponse = (request, reply) => {
     .catch((err) => reply(err))
 }
 
-const tokenVerify = (request, reply) => {
-  const query = request.query
-  const headers = request.headers
-
-  personalRepository.tokenVerify(query, headers)
-    .then((profile) => reply(profile))
-    .catch((err) => reply(err))
-}
-
 module.exports = {
   signIn,
   signUp,
@@ -232,6 +223,5 @@ module.exports = {
   friendsUndo,
   notificationsList,
   notificationsPutSaw,
-  notificationsResponse,
-  tokenVerify
+  notificationsResponse
 }

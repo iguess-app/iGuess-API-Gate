@@ -52,13 +52,3 @@ server.route({
     }
   }
 })
-
-server.route({
-  path: '/token/verify',
-  method: 'GET',
-  config: {
-    handler: (request, reply) => {
-      profileController.tokenVerify(request, reply)
-    }
-  }
-})
