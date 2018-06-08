@@ -84,3 +84,13 @@ server.route({
     }
   }
 })
+
+server.route({
+  path: '/guessleague/addToGuessLeague',
+  method: 'PATCH',
+  config: {
+    handler: (request, reply) => {
+      guessLeagueController.addToGuessLeague(request, reply)
+    }
+  }
+})

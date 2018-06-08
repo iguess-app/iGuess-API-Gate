@@ -59,6 +59,12 @@ const quitCaptain = (request, headers) => {
     .catch((err) => treatError(err))
 }
 
+const addToGuessLeague = (request, headers) => {
+  const uri = `${apis.guessUrl}/guessleague/addToGuessLeague`
+  return requestManager.patch(uri, headers, request)
+    .catch((err) => treatError(err))
+}
+
 module.exports = {
   createGuessLeague,
   getGuessLeague,
@@ -68,5 +74,6 @@ module.exports = {
   quitGuessLeague,
   kickUserFromGuessLeague,
   putCaptain,
-  quitCaptain
+  quitCaptain,
+  addToGuessLeague
 }

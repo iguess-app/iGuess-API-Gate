@@ -59,6 +59,12 @@ const quitCaptain = (request, reply) => {
     .catch((err) => reply(err))
 }
 
+const addToGuessLeague = (request, reply) => {
+  guessLeagueRepository.addToGuessLeague(request.payload, request.headers)
+    .then((teams) => reply(teams))
+    .catch((err) => reply(err))
+}
+
 module.exports = {
   createGuessLeague,
   getGuessLeague,
@@ -68,5 +74,6 @@ module.exports = {
   quitGuessLeague,
   kickUserFromGuessLeague,
   putCaptain,
-  quitCaptain
+  quitCaptain,
+  addToGuessLeague
 }
