@@ -202,6 +202,35 @@ const notificationsResponse = (request, reply) => {
     .catch((err) => reply(err))
 }
 
+const sendEmail = (request, reply) => {
+  const payload = request.payload
+  const headers = request.headers
+
+  personalRepository.sendEmail(payload, headers)
+    .then((profile) => reply(profile))
+    .catch((err) => reply(err))
+}
+
+
+const validateSoftToken = (request, reply) => {
+  const payload = request.query
+  const headers = request.headers
+
+  personalRepository.validateSoftToken(payload, headers)
+    .then((profile) => reply(profile))
+    .catch((err) => reply(err))
+}
+
+const updateNewPassword = (request, reply) => {
+  const payload = request.payload
+  const headers = request.headers
+
+  personalRepository.updateNewPassword(payload, headers)
+    .then((profile) => reply(profile))
+    .catch((err) => reply(err))
+}
+
+
 module.exports = {
   signIn,
   signUp,
@@ -223,5 +252,8 @@ module.exports = {
   friendsUndo,
   notificationsList,
   notificationsPutSaw,
-  notificationsResponse
+  notificationsResponse,
+  sendEmail,
+  validateSoftToken,
+  updateNewPassword
 }

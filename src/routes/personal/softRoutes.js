@@ -52,3 +52,33 @@ server.route({
     }
   }
 })
+
+server.route({
+  path: '/forgotMyPass/sendEmail',
+  method: 'POST',
+  config: {
+    handler: (request, reply) => {
+      profileController.sendEmail(request, reply)
+    }
+  }
+})
+
+server.route({
+  path: '/forgotMyPass/validateSoftToken',
+  method: 'GET',
+  config: {
+    handler: (request, reply) => {
+      profileController.validateSoftToken(request, reply)
+    }
+  }
+})
+
+server.route({
+  path: '/forgotMyPass/updateNewPassword',
+  method: 'PATCH',
+  config: {
+    handler: (request, reply) => {
+      profileController.updateNewPassword(request, reply)
+    }
+  }
+})

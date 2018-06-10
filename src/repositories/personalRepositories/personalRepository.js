@@ -143,6 +143,24 @@ const tokenVerify = (request, headers) => {
     .catch((err) => treatError(err, false))
 }
 
+const sendEmail = (request, headers) => {
+  const uri = `${apis.personalUrl}/forgotMyPass/sendEmail`
+  return requestManager.post(uri, headers, request)
+    .catch((err) => treatError(err, false))
+}
+
+const validateSoftToken = (request, headers) => {
+  const uri = `${apis.personalUrl}/forgotMyPass/validateSoftToken`
+  return requestManager.get(uri, headers, request)
+    .catch((err) => treatError(err, false))
+}
+
+const updateNewPassword = (request, headers) => {
+  const uri = `${apis.personalUrl}/forgotMyPass/updateNewPassword`
+  return requestManager.patch(uri, headers, request)
+    .catch((err) => treatError(err, false))
+}
+
 module.exports = {
   signIn,
   signUp,
@@ -166,5 +184,8 @@ module.exports = {
   notificationsList,
   notificationsPutSaw,
   notificationsResponse,
-  tokenVerify
+  tokenVerify,
+  sendEmail,
+  validateSoftToken,
+  updateNewPassword
 }
