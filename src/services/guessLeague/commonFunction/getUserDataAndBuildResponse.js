@@ -15,9 +15,9 @@ const getUserDataAndBuildResponse = (guessLeagueFound, headers) => {
 
   return Promise.each(arrayPromise, (userData, index) => {
     if (!userData.isBoom) {
-      guessLeagueFound.players[index].userName = userData.userName ? userData.userName : ''
-      guessLeagueFound.players[index].avatar = userData.avatar ? userData.avatar : ''
-      guessLeagueFound.players[index].name = userData.name ? userData.name : ''
+      guessLeagueFound.players[index].userName = userData.userName || ''
+      guessLeagueFound.players[index].avatar = userData.avatar || ''
+      guessLeagueFound.players[index].name = userData.name || ''
       guessLeagueFound.players[index].captain = guessLeagueFound.captains.includes(userData.userRef)
     }
   }).then(() => {
